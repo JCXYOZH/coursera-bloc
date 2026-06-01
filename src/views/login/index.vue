@@ -9,8 +9,8 @@
           <el-form ref="loginForm" :model="loginForm" :rules="loginRules">
             <p>温故阁</p>
             <div class="lowin-group">
-              <label>用户名 </label>
-              <el-input ref="userName" v-model="loginForm.userName" class="lowin-input" placeholder="用户名" name="userName" type="text" tabindex="1" auto-complete="on"/>
+              <label>号码 </label>
+              <el-input ref="userName" v-model="loginForm.userName" class="lowin-input" placeholder="手机号码" name="userName" type="text" tabindex="1" auto-complete="on"/>
             </div>
             <div class="lowin-group password-group">
               <label>密码 <a href="#" class="forgot-link">忘记密码?</a></label>
@@ -21,7 +21,7 @@
             <el-button :loading="loading" type="text" class="lowin-btn login-btn"  @click.native.prevent="handleLogin">登录</el-button>
 
             <div class="text-foot">
-              还没有账号?
+              拥有知新堂账号（不含社交号）后再点击
               <router-link to="/register" class="register-link">
                 注册
               </router-link>
@@ -45,7 +45,7 @@ export default {
   data () {
     const validateUsername = (rule, value, callback) => {
       if (value.length < 5) {
-        callback(new Error('用户名不能少于5个字符'))
+        callback(new Error('账号不能少于5个字符'))
       } else {
         callback()
       }

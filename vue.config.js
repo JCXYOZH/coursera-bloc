@@ -19,12 +19,17 @@ module.exports = {
     hotOnly: false,
     proxy: {
       '/api': {
-        target: 'http://98730b7.r16.vip.cpolar.cn',
-        // target: 'http://localhost:8170',
+        // target: 'http://4b08fa3e.r16.vip.cpolar.cn',
+        target: 'http://localhost:8170',
         changeOrigin: true,
-        pathRewrite: {
+        /*pathRewrite: {
           '^/api': ''
-        }
+        }*/
+      },
+      '/file': {
+        // target: 'http://4b08fa3e.r16.vip.cpolar.cn',
+        target: 'http://localhost:8170',
+        changeOrigin: true
       }
     }
   },

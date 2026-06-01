@@ -1,5 +1,5 @@
-const BASE_FILE_URL = 'http://98730b7.r16.vip.cpolar.cn'
-// const BASE_FILE_URL = 'http://localhost:8170'
+// const BASE_FILE_URL = 'http://4b08fa3e.r16.vip.cpolar.cn'
+const BASE_FILE_URL = 'http://localhost:8170'
 
 export function getFileUrl(path) {
   if (!path) return ''

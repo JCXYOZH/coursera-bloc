@@ -2,7 +2,8 @@
 const state = {
   user: {
     sexEnum: [{ key: 1, value: '男' }, { key: 2, value: '女' }],
-    levelEnum: [{ key: 1, value: '一年级' }, { key: 2, value: '二年级' }, { key: 3, value: '三年级' }],
+    // levelEnum: [{ key: 1, value: '一年级' }, { key: 2, value: '二年级' }, { key: 3, value: '三年级' }],
+    levelEnum: [{ key: 1, value: '大学' }],
     roleEnum: [{ key: 1, value: '学生' }, { key: 2, value: '教师' }, { key: 3, value: '管理员' }],
     message: {
       readTag: [{ key: true, value: 'success' }, { key: false, value: 'warning' }],
@@ -11,7 +12,8 @@ const state = {
   },
   exam: {
     examPaper: {
-      paperTypeEnum: [{ key: 1, value: '固定试卷' }, { key: 4, value: '时段试卷' }]
+      // paperTypeEnum: [{ key: 1, value: '固定试卷' }, { key: 4, value: '时段试卷' }]
+      paperTypeEnum: [{ key: 1, value: '基础习题' }, { key: 4, value: '模拟试卷' }]
     },
     examPaperAnswer: {
       statusEnum: [{ key: 1, value: '待批改' }, { key: 2, value: '完成' }],

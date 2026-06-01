@@ -9,8 +9,8 @@
           <el-form ref="loginForm" :model="loginForm">
             <p>温故阁</p>
             <div class="lowin-group">
-              <label>用户名 </label>
-              <el-input ref="userName" v-model="loginForm.userName" class="lowin-input" placeholder="用户名"
+              <label>账号 </label>
+              <el-input ref="userName" v-model="loginForm.userName" class="lowin-input" placeholder="手机号"
                         name="userName" type="text" tabindex="1" auto-complete="on"/>
             </div>
             <div class="lowin-group password-group">
@@ -45,6 +45,7 @@
 <script>
 import { mapMutations, mapState } from 'vuex'
 import registerApi from '@/api/register'
+import memberApi from '@/api/member'   // 注册校验
 
 export default {
   name: 'Login',
@@ -58,7 +59,7 @@ export default {
     }
   },
   methods: {
-    handleRegister () {
+    /*handleRegister () {
       let _this = this
       registerApi.register(this.loginForm).then(function (result) {
         if (result && result.code === 1) {
@@ -66,6 +67,27 @@ export default {
         } else {
           _this.$message.error(result.message)
         }
+      })
+    },*/
+    handleRegister () {
+      let _this = this
+      // 1. 先校验手机号是否在知新堂注册
+      memberApi.checkMobile(this.loginForm.userName).then(checkRes => {
+        if (checkRes.response === true) {
+          // 2. 存在，继续正常注册
+          registerApi.register(this.loginForm).then(function (result) {
+            if (result && result.code === 1) {
+              _this.$router.push({ path: '/login' })
+            } else {
+              _this.$message.error(result.message)
+            }
+          })
+        } else {
+          // 3. 不存在，提示
+          _this.$message.error('该手机号未在知新堂注册，请先在知新堂注册账号')
+        }
+      }).catch(() => {
+        _this.$message.error('校验手机号失败，请稍后再试')
       })
     },
     ...mapMutations('user', ['setUserName'])

@@ -1,5 +1,6 @@
 import axios from 'axios'
-axios.defaults.baseURL = '/api'
+// axios.defaults.baseURL = '/api'
+axios.defaults.baseURL = ''   // 设为空字符串，或直接删除该行
 import vue from 'vue'
 
 const request = function (loadtip, query) {
